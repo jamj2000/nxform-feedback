@@ -1,7 +1,7 @@
 'use client'
 import { realAction1, realAction2, realAction3 } from "@/lib/actions";
 import { useActionState, useEffect } from "react";
-import { CircleCheck, CircleAlert, RefreshCw } from 'lucide-react'
+import { CircleCheck, CircleAlert,  BicepsFlexed,Cat} from 'lucide-react'
 import { toast } from "sonner";
 
 
@@ -11,7 +11,7 @@ function Formulario() {
 
     const [state1, action1, pending1] = useActionState(realAction1, {})
     const [state2, action2, pending2] = useActionState(realAction2, {})
-    const [state3, action3, pending3] = useActionState(realAction3, {})
+    // const [state3, action3, pending3] = useActionState(realAction3, {})
 
     useEffect(() => {
         if (state1.error) toast.error(state1.error, { closeButton: true })       // duration: 4000
@@ -23,10 +23,10 @@ function Formulario() {
         if (state2.success) toast.success(state2.success, { duration: 2000 })
     }, [state2])
 
-    useEffect(() => {
-        if (state3.error) toast.error(state3.error, { closeButton: true, duration: 2000 })
-        if (state3.success) toast.success(state3.success, { closeButton: true, duration: 2000 })
-    }, [state3])
+    // useEffect(() => {
+    //     if (state3.error) toast.error(state3.error, { closeButton: true, duration: 2000 })
+    //     if (state3.success) toast.success(state3.success, { closeButton: true, duration: 2000 })
+    // }, [state3])
 
 
     return (
@@ -47,18 +47,18 @@ function Formulario() {
                 formAction={action1}
                 disabled={pending1}
                 className="disabled:bg-slate-600 bg-blue-600 text-white rounded-lg py-2" >
-                {pending1 ? <RefreshCw className="inline animate-spin size-4" /> : 'Action 1'}
+                {pending1 ? < BicepsFlexed className="inline animate-spin size-4" /> : 'Action 1'}
             </button>
 
 
             {state1?.error && !pending1 &&
                 < div className="text-sm font-medium text-red-600 bg-red-50 rounded-md flex items-center border">
-                    {<CircleAlert className="inline m-4 mr-2 size-4" />} {state1.error}
+                    {<Cat className="inline m-4 mr-2 size-4" />} {state1.error}
                 </div>
             }
             {state1?.success && !pending1 &&
                 <div className="text-sm font-medium text-green-600 bg-green-50 rounded-md flex items-center border">
-                    {<CircleCheck className="inline m-4 mr-2 size-4" />} {state1.success}
+                    {<Cat className="inline m-4 mr-2 size-4" />} {state1.success}
                 </div>
             }
 
@@ -66,7 +66,7 @@ function Formulario() {
                 formAction={action2}
                 disabled={pending2}
                 className="disabled:bg-slate-600 bg-blue-600 text-white rounded-lg py-2" >
-                {pending2 ? <RefreshCw className="inline animate-spin size-4" /> : 'Action 2'}
+                {pending2 ? < BicepsFlexed className="inline animate-spin size-4" /> : 'Action 2'}
             </button>
             {state2?.error && !pending2 &&
                 <div className="text-sm font-medium text-red-600 bg-red-50 rounded-md flex items-center border">
@@ -79,23 +79,7 @@ function Formulario() {
                 </div>
             }
 
-            <button
-                formAction={action3}
-                disabled={pending3}
-                className="disabled:bg-slate-600 bg-blue-600 text-white rounded-lg py-2" >
-                {pending3 ? <RefreshCw className="inline animate-spin size-4" /> : 'Action 3'}
-            </button>
-            {state3?.error && !pending3 &&
-                <div className="text-sm font-medium text-red-600 bg-red-50 rounded-md flex items-center border">
-                    {<CircleAlert className="inline m-4 mr-2 size-4" />} {state3.error}
-                </div>
-            }
-            {state3?.success && !pending3 &&
-                <div className="text-sm font-medium text-green-600 bg-green-50 rounded-md flex items-center border">
-                    {<CircleCheck className="inline m-4 mr-2 size-4" />} {state3.success}
-                </div>
-            }
-
+      
         </form >
     );
 }
