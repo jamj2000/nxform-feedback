@@ -40,6 +40,10 @@ function Formulario() {
                 <label htmlFor="fecha_nacimiento">Fecha nacimento:</label>
                 <input type="date" id="fecha_nacimiento" name="fecha_nacimiento" />
             </div>
+            <div className="flex justify-between">
+                <label htmlFor="Email">Email:</label>
+                <input type="text" id="email" name="email" />
+            </div>
 
             {/* Si el botón no tiene propiedad formAction, 
             entonces usa la action indicada en etiqueta form */}
