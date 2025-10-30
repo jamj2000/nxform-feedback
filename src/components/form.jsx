@@ -14,8 +14,8 @@ function Formulario() {
     const [state3, action3, pending3] = useActionState(realAction3, {})
 
     useEffect(() => {
-        if (state1.error) toast.error(state1.error, { closeButton: true })       // duration: 4000
-        if (state1.success) toast.success(state1.success, { closeButton: true }) // duration: 4000
+        if (state1.error) toast.error(state1.error, { closeButton: true })       
+        if (state1.success) toast.success(state1.success, { closeButton: true }) 
     }, [state1])
 
     useEffect(() => {
